@@ -18,6 +18,7 @@ function BST() {
 
 function insert(data) {
  var n = new Node(data, null, null);
+ // if there is no root node make one
  if (this.root === null) {
    this.root = n;
    }
@@ -43,4 +44,68 @@ function insert(data) {
    }
  }
 }
+
+function remove(data) {
+	 root = removeNode(this.root, data);
+}
+function removeNode(node, data) {
+	 if (node === null) {
+		  return null;
+		   }
+	  if (data == node.data) {
+		  // node has no children
+		  if (node.left === null && node.right === null) {
+			   return null;
+			    }
+		  // node has no left child
+		  if (node.left === null) {
+			   return node.right;
+			    }
+		  // node has no right child
+		  if (node.right === null) {
+			   return node.left;
+			    }
+		  // node has two children
+		  var tempNode = getSmallest(node.right);
+		   node.data = tempNode.data;
+		    node.right = this.removeNode(node.right, tempNode.data);
+		     return node;
+		      }
+	   else if (data < node.data) {
+		    node.left = this.removeNode(node.left, data);
+		     return node;
+		      }
+	    else {
+		     node.right = this.removeNode(node.right, data);
+		      return node;
+		       }
+}
+
+// change value in data
+function update(data) {
+	 var grade = this.find(data);
+	  grade.count++;
+	   return grade;
+}
+
+// display array contents
+function prArray(arr) {
+	 putstr(arr[0].toString() + ' ');
+	  for (var i = 1; i < arr.length; ++i) {
+		   putstr(arr[i].toString() + ' ');
+		    if (i % 10 === 0) {
+			     putstr("\n");
+			      }
+		     }
+}
+
+// create an array with specified length and fill with random integers
+function genArray(length) {
+	 var arr = [];
+	  for (var i = 0; i < length; ++i) {
+		   arr[i] = Math.floor(Math.random() * 101);
+		    }
+	   return arr;
+}
+
 
