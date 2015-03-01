@@ -14,10 +14,14 @@ function BST() {
  this.inOrder = inOrder;
  this.preOrder = preOrder;
  this.postOrder = postOrder;
+ this.count = count;
  }
+
+var count = 0;
 
 function insert(data) {
  var n = new Node(data, null, null);
+ this.count++;
  // if there is no root node make one
  if (this.root === null) {
    this.root = n;
@@ -53,6 +57,7 @@ function removeNode(node, data) {
 		  return null;
 		   }
 	  if (data == node.data) {
+      this.count--;
 		  // node has no children
 		  if (node.left === null && node.right === null) {
 			   return null;
